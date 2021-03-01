@@ -43,6 +43,7 @@ for (var i = 0; i < pacientes.length; i++){
 //botão de adicionar paciente, na form
 var botaoAdicionar = document.querySelector("#adicionar-paciente")
 
-botaoAdicionar.addEventListener("click", function(){
-  console.log("oi, botão clicado");
+botaoAdicionar.addEventListener("click", function(event){
+  event.preventDefault();
+
 });
