@@ -1,34 +1,39 @@
+// Alterando o título da página
 var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aparecida Nutricionista";
 
-var paciente = document.querySelector("#primeiroPaciente");
+//recebendo os pacientes em array e utilizando loop para verificar cada IMC de cada paciente
+var pacientes = document.querySelectorAll(".paciente");
+console.log(pacientes.length);
 
-var tdPeso = paciente.querySelector(".info-peso");
-var peso = tdPeso.textContent;
+for (var i = 0; i < pacientes.length; i++){
+  console.log(pacientes[i]);
 
-var tdAltura = paciente.querySelector(".info-altura");
-var altura = tdAltura.textContent;
+  var paciente = pacientes[i];
 
-var tdImc = paciente.querySelector(".info-imc");
+  var tdPeso = paciente.querySelector(".info-peso");
+  var peso = tdPeso.textContent;
 
-var pesoValido = true;
-var alturaValida = true;
+  var tdAltura = paciente.querySelector(".info-altura");
+  var altura = tdAltura.textContent;
 
-if(peso <= 0 || peso >= 400){
-  console.log("Peso inválido");
-  pesoValido = false;
-  tdImc.textContent = "Peso inválido!";
+  var tdImc = paciente.querySelector(".info-imc");
+
+  var pesoValido = true;
+  var alturaValida = true;
+
+  if(peso <= 0 || peso >= 400){
+    console.log("Peso inválido");
+    pesoValido = false;
+    tdImc.textContent = "Peso inválido!";
+  }
+  if(altura <= 0 || altura >= 3.00){
+    console.log("Altura inválida");
+    alturaValida = false;
+    tdImc.textContent = "Altura inválida!";
+  }
+  if(alturaValida && pesoValido){
+    var imc = peso / (altura * altura);
+    tdImc.textContent = imc.toFixed(2); //função .toFixed() que recebe a quantidade de casas decimais
+  }
 }
-if(altura <= 0 || altura >= 3.00){
-  console.log("Altura inválida");
-  alturaValida = false;
-  tdImc.textContent = "Altura inválida!";
-}
-if(alturaValida && pesoValido){
-  var imc = peso / (altura * altura);
-  tdImc.textContent = imc;
-}
-
-
-
-console.log(imc);
