@@ -39,3 +39,10 @@ for (var i = 0; i < pacientes.length; i++){
     tdImc.textContent = imc.toFixed(2); //função .toFixed() que recebe a quantidade de casas decimais
   }
 }
+
+//botão de adicionar paciente, na form
+var botaoAdicionar = document.querySelector("#adicionar-paciente")
+
+botaoAdicionar.addEventListener("click", function(){
+  console.log("oi, botão clicado");
+});
