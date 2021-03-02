@@ -35,7 +35,14 @@ for (var i = 0; i < pacientes.length; i++){
     paciente.classList.add("pacienteInvalido");
   }
   if(alturaValida && pesoValido){
-    var imc = peso / (altura * altura);
-    tdImc.textContent = imc.toFixed(2); //função .toFixed() que recebe a quantidade de casas decimais
+    var imc = calculaImc(peso, altura);
+    tdImc.textContent = imc; //função .toFixed() que recebe a quantidade de casas decimais
   }
+}
+
+function calculaImc(peso, altura){
+  var imc = 0;
+  imc = peso / (altura * altura);
+
+  return imc.toFixed(2);
 }
