@@ -12,8 +12,12 @@ botaoAdicionar.addEventListener("click", function(event){
   //cria a tr e td do paciente
   var pacienteTr = montaTr(paciente);
 
-  if(!validaPaciente(paciente)){
-    console.log("paciente inválido");
+  //variável recebe o retorno da função para avaliar a length da string retornada, validando o paciente
+  var erros = validaPaciente(paciente);
+
+  if(erros.length > 0 ){
+    var mensagemErro = document.querySelector("#mensagemErro");
+    mensagemErro.textContent = erros;
     return;
   }
 
@@ -59,10 +63,13 @@ function montaTd(dado, classe){
   return td;
 }
 
+//função retorna string vazia se verdadeira e string não vazia se falsa
 function validaPaciente(paciente) {
-  if(validaPeso(paciente.peso) && validaAltura(paciente.altura)){
-    return true;
-  }else{
-    return false;
-  }
+
+  var erros = [];
+
+  if(!validaPeso(paciente.peso))  return erros.push("O peso é inválido!");
+  if(!validaAltura(paciente.altura)) return erros.push("A altura é inválida!");
+
+  return erros;
 }
