@@ -5,8 +5,11 @@ var tabela = document.querySelector("#tabela-pacientes");
 tabela.addEventListener("dblclick", function(event){
   var alvoEvento = event.target;
   var paiDoAlvo = alvoEvento.parentNode //TR = paciente que queremos remover
+  paiDoAlvo.classList.add("fadeOut");
 
-  paiDoAlvo.remove();
+  setTimeout(function(){
+    paiDoAlvo.remove();
+  }, 500);
 });
 
 
